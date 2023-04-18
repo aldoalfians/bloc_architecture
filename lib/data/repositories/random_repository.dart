@@ -5,6 +5,7 @@ import 'package:bloc_architecture/data/models/product.dart';
 import 'package:bloc_architecture/data/models/user.dart';
 import 'package:bloc_architecture/data/providers/product_provider.dart';
 import 'package:bloc_architecture/data/providers/user_provider.dart';
+import 'package:http/retry.dart';
 
 class RandomRepository {
   UserProvider userProvider = UserProvider();
@@ -14,10 +15,12 @@ class RandomRepository {
     Map<String, dynamic> dataUser = await userProvider.getDataUser();
     Map<String, dynamic> dataProduct = await productProvider.getDataProduct();
 
-    if (dataUser["error"] == true && dataProduct["error"] == true) {
-      return {"error": true, "message": "Terjadi error"};
+    if (dataUser["error"] == true) {
+      return dataUser;
     }
-
+    if (dataProduct["error"] == true) {
+      return dataProduct;
+    }
     // Get Random User
     UserModel userModel = dataUser["data"] as UserModel;
 

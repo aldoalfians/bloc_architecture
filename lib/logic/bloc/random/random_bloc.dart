@@ -18,13 +18,14 @@ class RandomBloc extends Bloc<RandomEvent, RandomState> {
             await randomRepository.getRandomData();
 
         if (dataRandom["error"] == true) {
-          throw dataRandom["message"];
+          String error = dataRandom["message"];
+          emit(RandomError(error, state.data));
         } else {
           DataHomeModel dataHome = dataRandom["data"];
           emit(RandomCompleted(dataHome));
         }
       } catch (e) {
-        emit(RandomError(state.data));
+        emit(RandomError(e.toString(), state.data));
       }
     });
   }

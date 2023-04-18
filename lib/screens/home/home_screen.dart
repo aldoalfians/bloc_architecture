@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
           }
 
           if (state is RandomError) {
-            return Text("Terjadi Kesalahan");
+            return Text("${state.error}");
           }
 
           if (state is RandomInitial) {

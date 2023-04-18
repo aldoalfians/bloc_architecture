@@ -22,5 +22,7 @@ class RandomCompleted extends RandomState {
 }
 
 class RandomError extends RandomState {
-  RandomError(super.data);
+  RandomError(this.error, super.data);
+
+  String error;
 }
