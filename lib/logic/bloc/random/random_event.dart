@@ -6,3 +6,5 @@ abstract class RandomEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetRandomEvent extends RandomEvent {}

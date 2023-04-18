@@ -14,7 +14,7 @@ class RandomRepository {
     Map<String, dynamic> dataUser = await userProvider.getDataUser();
     Map<String, dynamic> dataProduct = await productProvider.getDataProduct();
 
-    if (dataUser["error"] == true || dataProduct["error"] == true) {
+    if (dataUser["error"] == true && dataProduct["error"] == true) {
       return {"error": true, "message": "Terjadi error"};
     }
 

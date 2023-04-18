@@ -6,9 +6,9 @@ void main() async {
   RandomRepository randomRepository = RandomRepository();
   print(await randomRepository.getRandomData());
 
-  // UserProvider userProvider = UserProvider();
-  // ProductProvider productProvider = ProductProvider();
+  UserProvider userProvider = UserProvider();
+  ProductProvider productProvider = ProductProvider();
 
-  // print(await userProvider.getDataUser());
-  // print(await productProvider.getDataProduct());
+  print(await userProvider.getDataUser());
+  print(await productProvider.getDataProduct());
 }
